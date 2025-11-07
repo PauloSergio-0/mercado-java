@@ -1,11 +1,11 @@
 package br.com.paulo.mercado.produtos;
 
 public class Produto {
-
+    private int id;
     private String nomeProduto;
     private String tipoProduto;
     private int quantidadeProduto;
-    private float precoProduto;
+    private double precoProduto;
 
 
     public String getNomeProduto() {
@@ -16,7 +16,17 @@ public class Produto {
         return quantidadeProduto;
     }
 
-    public Produto(String nomeProduto, String tipoProduto, int quantidadeProduto, float precoProduto){
+    public void diminuirQtd(){
+        if(this.quantidadeProduto>1) {
+            this.quantidadeProduto--;
+
+            System.out.println("");
+        } else {
+            System.out.println("Não há item no estoque");
+        }
+    }
+
+    public Produto(String nomeProduto, String tipoProduto, int quantidadeProduto, double precoProduto){
         this.nomeProduto = nomeProduto;
         this.tipoProduto = tipoProduto;
         this.quantidadeProduto = quantidadeProduto;
