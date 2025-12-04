@@ -9,12 +9,16 @@ public class Estoque {
 
 
     public void listarProdutos(){
-        produtos.forEach( p -> System.out.println(p.toString()));
+        produtos.forEach( p -> System.out.println( p.toString()));
+    }
+
+    public int total_produtos(){
+        return  produtos.size();
     }
 
     public void adcionarProduto(Produto produto){
         produtos.add(produto);
-        System.out.println("Foi adcionado "+produto.getQuantidadeProduto()+" de " +produto.getNomeProduto()+" ao estoque.");
+        System.out.println("Foi adicionado "+produto.getQuantidadeProduto()+" de " +produto.getNomeProduto()+" ao estoque.");
     }
 
 }

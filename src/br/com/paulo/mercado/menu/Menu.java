@@ -39,6 +39,8 @@ public class Menu {
             } else if (opcao == 2) {
                 estoque.listarProdutos();
 
+            } else if (opcao == 3) {
+                estoque.listarProdutos();
             }
 
 
@@ -64,7 +66,7 @@ public class Menu {
         scanner.nextLine();
 
 
-        return new Produto(nomeProduto,tipoProduto,qtdProduto,precoProduto);
+        return new Produto(estoque.total_produtos() ,nomeProduto,tipoProduto,qtdProduto,precoProduto);
     }
 
 }
