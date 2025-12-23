@@ -46,6 +46,7 @@ public class Menu {
             } else if (opcao == 2) {
                 estoque.listarProdutos();
 
+<<<<<<< HEAD
             } else if( opcao == 3){
                 venderProduto();
             } else if ( opcao == 4) {
@@ -58,6 +59,10 @@ public class Menu {
                     System.out.println("Produto não encontrado");
                 }
 
+=======
+            } else if (opcao == 3) {
+                estoque.listarProdutos();
+>>>>>>> 1e4fc9756dd1c056a7d635aa61e0e4fad2bcf9c0
             }
 
 
@@ -83,7 +88,11 @@ public class Menu {
         scanner.nextLine();
 
 
+<<<<<<< HEAD
         return new Produto(estoque.gerarId(),nomeProduto,tipoProduto,qtdProduto,precoProduto);
+=======
+        return new Produto(estoque.total_produtos() ,nomeProduto,tipoProduto,qtdProduto,precoProduto);
+>>>>>>> 1e4fc9756dd1c056a7d635aa61e0e4fad2bcf9c0
     }
 
     public Produto mockProdutos(String nomeProduto, String tipoProduto,int qtdProduto, double precoProduto){

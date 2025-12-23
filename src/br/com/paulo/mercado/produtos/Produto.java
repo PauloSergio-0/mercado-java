@@ -6,6 +6,7 @@ public class Produto {
     private String tipoProduto;
     private int quantidadeProduto;
     private double precoProduto;
+<<<<<<< HEAD
     private boolean status = true;
 
     public void setStatus(boolean status) {
@@ -27,6 +28,9 @@ public class Produto {
     public int getId() {
         return id;
     }
+=======
+    private int status;
+>>>>>>> 1e4fc9756dd1c056a7d635aa61e0e4fad2bcf9c0
 
 
     public String getNomeProduto() {
@@ -41,6 +45,7 @@ public class Produto {
         return quantidadeProduto;
     }
 
+<<<<<<< HEAD
     public void setQuantidadeProduto(int quantidadeProduto) {
         this.quantidadeProduto = quantidadeProduto;
     }
@@ -55,11 +60,25 @@ public class Produto {
     }
 
     public Produto( int id,String nomeProduto, String tipoProduto, int quantidadeProduto, double precoProduto){
+=======
+    public void diminuirQtd(int qtdVenda){
+        if(this.quantidadeProduto>qtdVenda) {
+            this.quantidadeProduto -= qtdVenda;
+
+            System.out.println("Foram vendidos "+ qtdVenda + "");
+        } else {
+            System.out.println("Não há itens no estoque o suficiente");
+        }
+    }
+
+    public Produto(int id,String nomeProduto, String tipoProduto, int quantidadeProduto, double precoProduto){
+>>>>>>> 1e4fc9756dd1c056a7d635aa61e0e4fad2bcf9c0
         this.id = id;
         this.nomeProduto = nomeProduto;
         this.tipoProduto = tipoProduto;
         this.quantidadeProduto = quantidadeProduto;
         this.precoProduto = precoProduto;
+        this.status = 0;
     }
 
     @Override

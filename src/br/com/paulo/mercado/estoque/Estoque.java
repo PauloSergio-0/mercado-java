@@ -14,7 +14,11 @@ public class Estoque {
     }
 
     public void listarProdutos(){
-        produtos.forEach( p -> System.out.println(p.toString()));
+        produtos.forEach( p -> System.out.println( p.toString()));
+    }
+
+    public int total_produtos(){
+        return  produtos.size();
     }
 
 
@@ -25,6 +29,7 @@ public class Estoque {
 
     public void adcionarProduto(Produto produto){
         produtos.add(produto);
+<<<<<<< HEAD
 
         System.out.println("Foi adcionado " + produto.getQuantidadeProduto() + " de " + produto.getNomeProduto() + " ao estoque.");
     }
@@ -57,6 +62,9 @@ public class Estoque {
                 findFirst();
 
             return verificador.isPresent();
+=======
+        System.out.println("Foi adicionado "+produto.getQuantidadeProduto()+" de " +produto.getNomeProduto()+" ao estoque.");
+>>>>>>> 1e4fc9756dd1c056a7d635aa61e0e4fad2bcf9c0
     }
 
 }
