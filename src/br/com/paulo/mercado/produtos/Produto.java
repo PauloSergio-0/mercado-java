@@ -6,27 +6,56 @@ public class Produto {
     private String tipoProduto;
     private int quantidadeProduto;
     private double precoProduto;
+    private boolean status = true;
+
+    public void setStatus(boolean status) {
+        this.status = status;
+    }
+
+    public void setTipoProduto(String tipoProduto) {
+        this.tipoProduto = tipoProduto;
+    }
+
+    public boolean isStatus() {
+        return status;
+    }
+
+    public void setPrecoProduto(double precoProduto) {
+        this.precoProduto = precoProduto;
+    }
+
+    public int getId() {
+        return id;
+    }
 
 
     public String getNomeProduto() {
         return nomeProduto;
     }
 
+    public void setNomeProduto(String nomeProduto) {
+        this.nomeProduto = nomeProduto;
+    }
+
     public int getQuantidadeProduto() {
         return quantidadeProduto;
     }
 
-    public void diminuirQtd(){
-        if(this.quantidadeProduto>1) {
-            this.quantidadeProduto--;
-
-            System.out.println("");
-        } else {
-            System.out.println("Não há item no estoque");
-        }
+    public void setQuantidadeProduto(int quantidadeProduto) {
+        this.quantidadeProduto = quantidadeProduto;
     }
 
-    public Produto(String nomeProduto, String tipoProduto, int quantidadeProduto, double precoProduto){
+    public void diminuirQtd(int qtdVenda){
+
+            this.quantidadeProduto -= qtdVenda;
+
+            if (this.quantidadeProduto == 0){
+                this.status = false;
+            }
+    }
+
+    public Produto( int id,String nomeProduto, String tipoProduto, int quantidadeProduto, double precoProduto){
+        this.id = id;
         this.nomeProduto = nomeProduto;
         this.tipoProduto = tipoProduto;
         this.quantidadeProduto = quantidadeProduto;
@@ -35,7 +64,8 @@ public class Produto {
 
     @Override
     public String toString() {
-        return "Nome: " + this.nomeProduto +
+        return "id: " + this.id +
+                "\nNome: " + this.nomeProduto +
                 "\nTipo: " + this.tipoProduto +
                 "\nQuantidade: " + this.quantidadeProduto +
                 "\nPreço: " + this.precoProduto;

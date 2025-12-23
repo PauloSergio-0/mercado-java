@@ -5,13 +5,21 @@ import java.util.Scanner;
 
 import br.com.paulo.mercado.estoque.Estoque;
 import br.com.paulo.mercado.produtos.Produto;
+import br.com.paulo.mercado.service.ProdutoService;
+
 
 public class Menu {
     private static final Scanner scanner = new Scanner(System.in).useLocale(Locale.US);
     private static final Estoque estoque = new Estoque();
+    private static final ProdutoService produtoService= new ProdutoService();
+
 
     public void mercadoSistema() {
         int opcao = 0;
+        estoque.mockProduto(mockProdutos("Feijão", "Grãos", 12, 12.50));
+        estoque.mockProduto(mockProdutos("Arroz", "Grãos", 13, 8.50));
+        estoque.mockProduto(mockProdutos("Suco", "Bebida", 8, 10.75));
+        estoque.mockProduto(mockProdutos("Iphone", "Eletronico", 5, 899.99));
 
         while (true) {
             System.out.println("""
@@ -20,10 +28,9 @@ public class Menu {
                 1. Cadastrar Produto
                 2. listar Produto
                 3. Vender Produto
+                4. Atualizar Produto
                 0. Sair
                 \s
-                
-                
                 """);
 
             opcao = scanner.nextInt();
@@ -38,6 +45,18 @@ public class Menu {
 
             } else if (opcao == 2) {
                 estoque.listarProdutos();
+
+            } else if( opcao == 3){
+                venderProduto();
+            } else if ( opcao == 4) {
+                System.out.println("Digite o ID: ");
+                int id = scanner.nextInt();
+                scanner.nextLine();
+                if(estoque.verificarID(id)) {
+                    produtoService.atualizarProduto(id);
+                } else {
+                    System.out.println("Produto não encontrado");
+                }
 
             }
 
@@ -64,7 +83,26 @@ public class Menu {
         scanner.nextLine();
 
 
-        return new Produto(nomeProduto,tipoProduto,qtdProduto,precoProduto);
+        return new Produto(estoque.gerarId(),nomeProduto,tipoProduto,qtdProduto,precoProduto);
     }
+
+    public Produto mockProdutos(String nomeProduto, String tipoProduto,int qtdProduto, double precoProduto){
+
+        return new Produto(estoque.gerarId(),nomeProduto,tipoProduto,qtdProduto,precoProduto);
+    }
+
+    public void venderProduto(){
+
+        System.out.println("Escolha o id: ");
+        int idVenda = scanner.nextInt();
+        scanner.nextLine();
+
+        System.out.println("Escolha o quantidade da venda: ");
+        int qtdVenda = scanner.nextInt();
+        scanner.nextLine();
+
+        estoque.venderProduto(idVenda, qtdVenda);
+    }
+
 
 }
