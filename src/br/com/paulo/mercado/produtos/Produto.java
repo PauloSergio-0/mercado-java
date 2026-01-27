@@ -24,6 +24,10 @@ public class Produto {
         this.precoProduto = precoProduto;
     }
 
+    public double getPrecoProduto() {
+        return precoProduto;
+    }
+
     public int getId() {
         return id;
     }
