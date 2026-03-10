@@ -29,6 +29,7 @@ public class Menu {
                 2. listar Produto
                 3. Vender Produto
                 4. Atualizar Produto
+                5. listar Vendas
                 0. Sair
                 \s
                 """);
@@ -48,6 +49,7 @@ public class Menu {
 
             } else if( opcao == 3){
                 venderProduto();
+
             } else if ( opcao == 4) {
                 System.out.println("Digite o ID: ");
                 int id = scanner.nextInt();
@@ -58,8 +60,9 @@ public class Menu {
                     System.out.println("Produto não encontrado");
                 }
 
+            } else if( opcao == 5) {
+                estoque.listarVendas();
             }
-
 
         }
 
