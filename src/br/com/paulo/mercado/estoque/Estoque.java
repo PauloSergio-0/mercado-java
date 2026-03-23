@@ -8,23 +8,35 @@ import java.util.Optional;
 
 public class Estoque {
     protected static ArrayList<Produto> produtos = new ArrayList<>();
-    protected static ArrayList<Venda> vendas = new ArrayList<>();
-    int proximoId = 1;
-    int vendaId = 1;
+    protected static  ArrayList<Venda> vendas = new ArrayList<>();
 
-    public int gerarId (){
-        return proximoId++;
-    }
+    public static int gerarId (Class<?> typeClass){
 
-    public int gerarIdVenda() {
-        return vendaId++;
+        if (typeClass == Produto.class) {
+            if (produtos.isEmpty()) {
+                return 1;
+            }
+
+            return produtos.get(produtos.size() - 1).getId() + 1;
+
+        } else if (typeClass == Venda.class) {
+            if(vendas.isEmpty()){
+                return 1;
+            }
+
+            return vendas.get(vendas.size() - 1).getId() + 1;
+        } else {
+            return -1;
+        }
     }
 
     public void listarProdutos(){
         produtos.forEach( p -> System.out.println(p.toString()));
     }
 
-    
+    public void listarVendas(){
+        vendas.forEach(v -> System.out.println(v.toString()));
+    }
 
     public void mockProduto(Produto produto){
         produtos.add(produto);
@@ -35,6 +47,11 @@ public class Estoque {
         produtos.add(produto);
 
         System.out.println("Foi adcionado " + produto.getQuantidadeProduto() + " de " + produto.getNomeProduto() + " ao estoque.");
+    }
+    public void adcionarVenda(Venda venda){
+        vendas.add(venda);
+
+        System.out.println("Foi vendido " +venda.getQtdVendida() + " unidades do produto com id " +venda.getId() +" por "+ venda.getValorVenda() + " reais");
     }
 
     public void venderProduto(int id, int qtdVenda){
@@ -47,11 +64,11 @@ public class Estoque {
                 }
 
                 if(produto.getQuantidadeProduto() > qtdVenda){
-
-                    Venda produtoVendido =  new Venda(gerarIdVenda(),produto.getId(),qtdVenda, qtdVenda * produto.getPrecoProduto());
                     produto.diminuirQtd(qtdVenda);
 
-                    vendas.add(produtoVendido);
+                    Venda venda = new Venda(gerarId(Venda.class), produto.getId(), qtdVenda, produto.getPrecoProduto() * qtdVenda);
+                    adcionarVenda(venda);
+
                 } else {
                     System.out.println("A quantidade da venda do item "+produto.getNomeProduto()+ "é superior ao o estoque que é de "+produto.getQuantidadeProduto());
                 }
@@ -68,7 +85,7 @@ public class Estoque {
                 filter(p  -> p.getId() == id ).
                 findFirst();
 
-            return verificador.isPresent();
+        return verificador.isPresent();
     }
 
 }

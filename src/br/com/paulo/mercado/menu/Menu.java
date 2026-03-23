@@ -27,8 +27,9 @@ public class Menu {
                 MENU:\s
                 1. Cadastrar Produto
                 2. listar Produto
-                3. Vender Produto
-                4. Atualizar Produto
+                3. Atualizar Produto
+                4. Vender Produto
+                5. listar Vendas
                 0. Sair
                 \s
                 """);
@@ -47,8 +48,6 @@ public class Menu {
                 estoque.listarProdutos();
 
             } else if( opcao == 3){
-                venderProduto();
-            } else if ( opcao == 4) {
                 System.out.println("Digite o ID: ");
                 int id = scanner.nextInt();
                 scanner.nextLine();
@@ -58,8 +57,15 @@ public class Menu {
                     System.out.println("Produto não encontrado");
                 }
 
-            }
 
+            } else if ( opcao == 4) {
+                venderProduto();
+
+            } else if( opcao == 5) {
+                estoque.listarVendas();
+            } else{
+                System.out.println("Opção inválida");
+            }
 
         }
 
@@ -83,7 +89,7 @@ public class Menu {
         scanner.nextLine();
 
 
-        return new Produto(estoque.gerarId(),nomeProduto,tipoProduto,qtdProduto,precoProduto);
+        return new Produto(estoque.gerarId(Produto.class),nomeProduto,tipoProduto,qtdProduto,precoProduto);
     }
 
     public Produto mockProdutos(String nomeProduto, String tipoProduto,int qtdProduto, double precoProduto){

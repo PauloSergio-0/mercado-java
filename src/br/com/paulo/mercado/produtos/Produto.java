@@ -45,6 +45,7 @@ public class Produto {
         return quantidadeProduto;
     }
 
+
     public void setQuantidadeProduto(int quantidadeProduto) {
         this.quantidadeProduto = quantidadeProduto;
     }
@@ -72,6 +73,6 @@ public class Produto {
                 "\nNome: " + this.nomeProduto +
                 "\nTipo: " + this.tipoProduto +
                 "\nQuantidade: " + this.quantidadeProduto +
-                "\nPreço: " + this.precoProduto;
+                "\nPreço: " + this.precoProduto+"\n";
     }
 }
