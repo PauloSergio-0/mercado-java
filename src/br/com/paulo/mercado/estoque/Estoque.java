@@ -10,20 +10,24 @@ public class Estoque {
     protected static ArrayList<Produto> produtos = new ArrayList<>();
     protected static  ArrayList<Venda> vendas = new ArrayList<>();
 
-    public static int gerarId (){
-        if(produtos.isEmpty()){
-            return 1;
+    public static int gerarId (Class<?> typeClass){
+
+        if (typeClass == Produto.class) {
+            if (produtos.isEmpty()) {
+                return 1;
+            }
+
+            return produtos.get(produtos.size() - 1).getId() + 1;
+
+        } else if (typeClass == Venda.class) {
+            if(vendas.isEmpty()){
+                return 1;
+            }
+
+            return vendas.get(vendas.size() - 1).getId() + 1;
+        } else {
+            return -1;
         }
-
-        return produtos.get(produtos.size() - 1).getId() + 1;
-    }
-
-    public static int gerarIdVenda (){
-        if(vendas.isEmpty()){
-            return 1;
-        }
-
-        return vendas.get(vendas.size() - 1).getId() + 1;
     }
 
     public void listarProdutos(){
@@ -62,7 +66,7 @@ public class Estoque {
                 if(produto.getQuantidadeProduto() > qtdVenda){
                     produto.diminuirQtd(qtdVenda);
 
-                    Venda venda = new Venda(gerarIdVenda(), produto.getId(), qtdVenda, produto.getPrecoProduto() * qtdVenda);
+                    Venda venda = new Venda(gerarId(Venda.class), produto.getId(), qtdVenda, produto.getPrecoProduto() * qtdVenda);
                     adcionarVenda(venda);
 
                 } else {
@@ -81,7 +85,7 @@ public class Estoque {
                 filter(p  -> p.getId() == id ).
                 findFirst();
 
-            return verificador.isPresent();
+        return verificador.isPresent();
     }
 
 }

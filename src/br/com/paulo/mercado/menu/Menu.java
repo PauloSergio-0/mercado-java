@@ -89,7 +89,7 @@ public class Menu {
         scanner.nextLine();
 
 
-        return new Produto(estoque.gerarId(),nomeProduto,tipoProduto,qtdProduto,precoProduto);
+        return new Produto(estoque.gerarId(Produto.class),nomeProduto,tipoProduto,qtdProduto,precoProduto);
     }
 
     public Produto mockProdutos(String nomeProduto, String tipoProduto,int qtdProduto, double precoProduto){
