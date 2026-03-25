@@ -43,12 +43,12 @@ public class Estoque {
 
     }
 
-    public void adcionarProduto(Produto produto){
+    public void adicionarProduto(Produto produto){
         produtos.add(produto);
 
         System.out.println("Foi adcionado " + produto.getQuantidadeProduto() + " de " + produto.getNomeProduto() + " ao estoque.");
     }
-    public void adcionarVenda(Venda venda){
+    public void adicionarVenda(Venda venda){
         vendas.add(venda);
 
         System.out.println("Foi vendido " +venda.getQtdVendida() + " unidades do produto com id " +venda.getId() +" por "+ venda.getValorVenda() + " reais");
@@ -67,7 +67,7 @@ public class Estoque {
                     produto.diminuirQtd(qtdVenda);
 
                     Venda venda = new Venda(gerarId(Venda.class), produto.getId(), qtdVenda, produto.getPrecoProduto() * qtdVenda);
-                    adcionarVenda(venda);
+                    adicionarVenda(venda);
 
                 } else {
                     System.out.println("A quantidade da venda do item "+produto.getNomeProduto()+ "é superior ao o estoque que é de "+produto.getQuantidadeProduto());

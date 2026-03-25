@@ -42,12 +42,13 @@ public class Menu {
                 break;
 
             } else if (opcao == 1) {
-                estoque.adcionarProduto(cadrastoProduto());
+                estoque.adicionarProduto(cadrastoProduto());
 
             } else if (opcao == 2) {
                 estoque.listarProdutos();
 
             } else if( opcao == 3){
+
                 System.out.println("Digite o ID: ");
                 int id = scanner.nextInt();
                 scanner.nextLine();
@@ -94,7 +95,7 @@ public class Menu {
 
     public Produto mockProdutos(String nomeProduto, String tipoProduto,int qtdProduto, double precoProduto){
 
-        return new Produto(estoque.gerarId(),nomeProduto,tipoProduto,qtdProduto,precoProduto);
+        return new Produto(estoque.gerarId(Produto.class),nomeProduto,tipoProduto,qtdProduto,precoProduto);
     }
 
     public void venderProduto(){
