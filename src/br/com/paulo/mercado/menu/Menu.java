@@ -30,6 +30,7 @@ public class Menu {
                 3. Atualizar Produto
                 4. Vender Produto
                 5. listar Vendas
+                6. Cadastrar Cliente
                 0. Sair
                 \s
                 """);
@@ -109,6 +110,22 @@ public class Menu {
         scanner.nextLine();
 
         estoque.venderProduto(idVenda, qtdVenda);
+    }
+
+    public void cadastroCliente(){
+
+        System.out.println("Nome: ");
+        String nome = scanner.nextLine();
+
+        System.out.println("CPF: ");
+        String cpf = scanner.nextLine();
+
+        System.out.println("Telefone: ");
+        String telefone = scanner.nextLine();
+
+        System.out.println("Endereço: ");
+        String endereco = scanner.nextLine();
+
     }
 
 
